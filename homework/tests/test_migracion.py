@@ -1,11 +1,15 @@
 import os
+import subprocess
 
 from homework.src.wordcount import main
 
 
 def test_migracion():
 
-    main()
+    subprocess.run(
+        ["python3", "-m", "homework", "data/input", "data/output"],
+        check=True,
+    )
 
     if not os.path.exists("data/output/wordcount.tsv"):
         raise Exception("El archivo wordcount.tsv no existe")
